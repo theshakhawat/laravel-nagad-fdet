@@ -1,0 +1,33 @@
+{
+    "name": "theshakhawat/laravel-nagad-fdet",
+    "description": "Nagad Modified Payment Gateway only for Freelancer Digital Expert Team. More info visit: https://nagad.banglaqr.online",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Theshakhawat\\NagadFdet\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Shakhawat",
+            "email": "shakhawat9083@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0|^8.1|^8.2|^8.3|^8.4|^8.5",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0",
+        "illuminate/http": "^9.0|^10.0|^11.0|^12.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Theshakhawat\\NagadFdet\\NagadServiceProvider"
+            ],
+            "aliases": {
+                "NagadFdet": "Theshakhawat\\NagadFdet\\Facades\\NagadFdet"
+            }
+        }
+    }
+}
