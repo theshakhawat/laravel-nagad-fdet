@@ -3,6 +3,7 @@
 namespace Theshakhawat\NagadFdet;
 
 use Illuminate\Support\ServiceProvider;
+use Theshakhawat\NagadFdet\Console\Commands\InstallNagadPackage;
 use Theshakhawat\NagadFdet\Services\NagadService;
 
 class NagadServiceProvider extends ServiceProvider
@@ -26,6 +27,11 @@ class NagadServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/Config/nagad.php' => config_path('nagad.php'),
             ], 'nagad-config');
+
+            // Artisan Command রেজিস্টার করা
+            $this->commands([
+                InstallNagadPackage::class,
+            ]);
         }
     }
 }

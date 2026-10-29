@@ -14,14 +14,10 @@ composer require theshakhawat/laravel-nagad-fdet
 
 The package supports **Laravel Auto-Discovery**. The ServiceProvider and Facade (`NagadFdet`) will be registered automatically.
 
----
-
-## ⚙️ Configuration & Environment
-
-Publish the configuration file:
+Run the install command to automatically publish config, copy controller, and append routes to your `routes/web.php`:
 
 ```bash
-php artisan vendor:publish --tag=nagad-config
+php artisan nagad:install
 ```
 
 Add your credentials to your `.env` file:
