@@ -8,6 +8,21 @@ use Theshakhawat\NagadFdet\Facades\NagadFdet;
 
 class NagadPaymentController extends Controller
 {
+    /**
+     * Display demo checkout page.
+     */
+    public function checkout()
+    {
+        if (view()->exists('nagad.pay')) {
+            return view('nagad.pay');
+        }
+
+        return view('nagad::pay');
+    }
+
+    /**
+     * Initiate checkout transaction.
+     */
     public function initiatePayment(Request $request)
     {
         $amount = (float) $request->input('amount', 100);
@@ -39,6 +54,9 @@ class NagadPaymentController extends Controller
         }
     }
 
+    /**
+     * Handle Nagad callback redirect.
+     */
     public function handleCallback(Request $request)
     {
         $paymentRefId = $request->query('payment_ref_id') ?? $request->input('payment_ref_id');
@@ -67,6 +85,9 @@ class NagadPaymentController extends Controller
         ]);
     }
 
+    /**
+     * Directly query verification status.
+     */
     public function verifyPayment(Request $request, ?string $paymentRefId = null)
     {
         $refId = $paymentRefId ?: $request->input('payment_ref_id');

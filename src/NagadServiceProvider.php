@@ -22,13 +22,18 @@ class NagadServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'nagad');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/Config/nagad.php' => config_path('nagad.php'),
             ], 'nagad-config');
 
-            // Artisan Command রেজিস্টার করা
+            $this->publishes([
+                __DIR__ . '/resources/views' => resource_path('views/nagad'),
+            ], 'nagad-views');
+
+            // Artisan Command
             $this->commands([
                 InstallNagadPackage::class,
             ]);
